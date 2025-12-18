@@ -1,21 +1,27 @@
+
+// export function getBaseUrl(): string {
+//   if (typeof window !== "undefined") return ""
+//   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
+//   return "http://localhost:3000"
+// }
+
+
+
+
 export function getBaseUrl(): string {
-  if (typeof window !== "undefined") {
-    // Client-side, use relative URL
-    return "";
-  }
+  // On client, use relative URL (empty string)
+  if (typeof window !== "undefined") return "";
 
-  // Server-side
-
-  // If Vercel deployment, use VERCEL_URL (set by Vercel)
+  // On server, first check VERCEL_URL (for deployment on Vercel)
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  // If you set NEXT_PUBLIC_BASE_URL manually in .env.local or .env.production
+  // Fallback to environment variable for local or other environments
   if (process.env.NEXT_PUBLIC_BASE_URL) {
     return process.env.NEXT_PUBLIC_BASE_URL;
   }
 
-  // Fallback to localhost
+  // Default fallback
   return "http://localhost:3000";
 }

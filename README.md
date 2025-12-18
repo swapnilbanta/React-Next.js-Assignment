@@ -30,3 +30,12 @@ npm run dev
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
+make .evn .local file name as
+
+.env .local
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+
+current login through
+   email: "swapnil@example.com", password: "password123"
+ email: "rajesh@example.com", password: "admin123"
+
