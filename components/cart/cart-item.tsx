@@ -16,13 +16,21 @@ export function CartItem({ item }: CartItemProps) {
   return (
     <div className="flex gap-4 border rounded-lg p-4">
       <div className="relative h-24 w-24 flex-shrink-0 bg-muted rounded-md overflow-hidden">
-        <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-cover" sizes="96px" />
+        <Image
+          src={item.image || "/placeholder.svg"}
+          alt={item.name}
+          fill
+          className="object-cover"
+          sizes="96px"
+        />
       </div>
 
       <div className="flex-1">
         <h3 className="font-semibold mb-1">{item.name}</h3>
         <p className="text-sm text-muted-foreground mb-2">{item.category}</p>
-        <div className="font-bold">${item.price.toFixed(2)}</div>
+        <div className="font-bold">
+          ${typeof item.price === "number" && !isNaN(item.price) ? item.price.toFixed(2) : "0.00"}
+        </div>
       </div>
 
       <div className="flex flex-col items-end justify-between">

@@ -8,7 +8,7 @@ import Link from "next/link"
 export function CartView() {
   const { items, totalPrice = 0, clearCart } = useCart()
 
-  if (items.length === 0) {
+  if (!items || items.length === 0) {
     return (
       <div className="text-center py-12">
         <p className="text-muted-foreground mb-4">Your cart is empty</p>
@@ -27,9 +27,11 @@ export function CartView() {
   return (
     <div className="grid lg:grid-cols-3 gap-8">
       <div className="lg:col-span-2 space-y-4">
-        {items.map((item) => (
-          <CartItem key={item.id} item={item} />
-        ))}
+        {items.map((item) => {
+          // Defensive key fallback
+          const key = item.id ?? item.name ?? Math.random().toString(36).substring(2)
+          return <CartItem key={key} item={item} />
+        })}
       </div>
 
       <div className="lg:col-span-1">
