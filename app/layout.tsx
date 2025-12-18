@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | ShopHub",
   },
   description: "Shop the latest electronics, accessories, and more at ShopHub",
-  generator: "v0.app",
+  generator: "swapnil",
   openGraph: {
     title: "ShopHub - Your Online Shopping Destination",
     description: "Shop the latest electronics, accessories, and more at ShopHub",
